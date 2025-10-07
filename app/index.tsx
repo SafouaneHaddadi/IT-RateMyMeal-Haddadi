@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import MealCard from "@/components/MealCard";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -9,6 +10,11 @@ export default function Index() {
       <Text style={styles.title}>Application Rate my meal !</Text>
       <Header title="Bienvenue sur l'app Rate my meal" />
 
+      <MealCard 
+        name="Pizza Margherita" 
+        imageUrl="https://i.imgur.com/Cbe2LfH.jpeg" 
+        rating={4.5} 
+      />
     </View>
   );
 }

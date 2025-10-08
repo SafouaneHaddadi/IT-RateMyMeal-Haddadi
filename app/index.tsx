@@ -12,42 +12,39 @@ export default function Index() {
   imageUrl: string;
 };
 
-const [meals, setMeals] = useState<Meal[]>([]);
+const [meals, setMeals] = useState<Meal[]>([]); // liste des plats au départ vide
 
   const handleAddMeal = (newMeal: Meal) => {
-  setMeals([...meals, newMeal]);
-};
+  setMeals([...meals, newMeal]); //on add le nouveau plat
+   };
 
+  
   return (
     <View style={styles.container}>
-
       <Text style={styles.title}>Application Rate my meal !</Text>
       <Header title="Bienvenue sur l'app Rate my meal" />
 
-      <AddMealForm onAddMeal={handleAddMeal} />
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <AddMealForm onAddMeal={handleAddMeal} />
 
-      <ScrollView>
-  {meals.map((meal, index) => (
-    <View key={index}>
-      <MealCard
-        name={meal.name}
-        rating={meal.rating}
-        imageUrl={meal.imageUrl}
-      />
+        {meals.map((meal, index) => (
+          <View key={index} style={styles.mealcard}>
+            <MealCard
+              name={meal.name}
+              rating={meal.rating}
+              imageUrl={meal.imageUrl}
+            />
+
+            {/* <MealCard 
+             name="Pizza Margherita" 
+             imageUrl="https://i.imgur.com/Cbe2LfH.jpeg" 
+             rating={4.5} 
+             />
+            */}
+          </View>
+        ))}
+      </ScrollView>
     </View>
-  ))}
-</ScrollView>
-
-{/* <MealCard 
-        name="Pizza Margherita" 
-        imageUrl="https://i.imgur.com/Cbe2LfH.jpeg" 
-        rating={4.5} 
-      /> */}
-    
-    </View>
-
-     
-
   );
 }
 
@@ -61,5 +58,12 @@ const styles = StyleSheet.create({
     color: 'green',
     fontSize: 18,
     marginBottom: 10,
+  },
+  scrollContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 30,
+  },
+  mealcard: {
+    marginTop: 12,
   },
 });

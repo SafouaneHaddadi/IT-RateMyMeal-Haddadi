@@ -18,6 +18,11 @@ const [meals, setMeals] = useState<Meal[]>([]); // liste des plats au départ vi
   setMeals([...meals, newMeal]); //on add le nouveau plat
    };
 
+   const handleDeleteMeal = (index: number) => {
+   const newMeals = meals.filter((_, i) => i !== index);
+   setMeals(newMeals);
+     };
+
   
   return (
     <View style={styles.container}>
@@ -33,6 +38,7 @@ const [meals, setMeals] = useState<Meal[]>([]); // liste des plats au départ vi
               name={meal.name}
               rating={meal.rating}
               imageUrl={meal.imageUrl}
+              onDelete={() => handleDeleteMeal(index)}
             />
 
             {/* <MealCard 

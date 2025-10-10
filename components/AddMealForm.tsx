@@ -39,6 +39,7 @@ const AddMealForm = ({ onAddMeal }: AddMealFormProps) => {
     setImageUrl('');
   };
 
+
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Nom du plat</Text>

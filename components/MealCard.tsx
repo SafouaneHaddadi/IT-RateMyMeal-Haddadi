@@ -1,13 +1,14 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-interface MealCardProps {
+type MealCardProps = {
   name: string;
   imageUrl: string;
   rating: number;
+  onDelete: () => void;
 }
 
-const MealCard = ({ name, imageUrl, rating }: MealCardProps) => {
+const MealCard = ({ name, imageUrl, rating, onDelete }: MealCardProps) => {
   return (
     <View style={styles.card}>
       <Text style={styles.label}>Name:</Text>
@@ -18,6 +19,11 @@ const MealCard = ({ name, imageUrl, rating }: MealCardProps) => {
 
       <Text style={styles.label}>Rating:</Text>
       <Text style={styles.value}>{rating}/5</Text>
+
+       <Pressable onPress={onDelete} style={styles.deleteButton}>
+        <Text style={styles.deleteText}>X</Text>
+      </Pressable>
+      
     </View>
 
   );
@@ -36,6 +42,17 @@ card: {
   shadowOpacity: 0.2,
   shadowRadius: 3,
   elevation: 6,
+},
+
+deleteText: {
+  color: "red"
+},
+deleteButton:{
+  marginTop: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 5,
+
 },
 
 label:{
